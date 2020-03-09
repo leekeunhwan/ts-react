@@ -1,26 +1,26 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
-    mode: 'development', // production
-    devtool: 'eval', // hidden-source-map
-    resolve: {
-        extensions: ['.jsx', '.js', '.tsx', '.ts'],
-    },
-
-    entry: {
-        app: './client'
-    },
-    module: {
-        rules: [{
-            test: /\.tsx?$/,
-            loader: 'awesome-typescript-loader',
-        }]
-    },
-    plugins: [],
-    output: {
-        filename: 'app.js',
-        path: path.join(__dirname, 'dist'),
-        publicPath: '/dist',
-    }
-}
+  // 추후 프로덕션 레벨에는 주석해놓은 것으로 변경해야함
+  mode: "development", // production
+  devtool: "eval", // hidden-source-map
+  resolve: {
+    extensions: [".jsx", ".js", ".tsx", ".ts"]
+  },
+  entry: {
+    app: "./client"
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: "awesome-typescript-loader"
+      }
+    ]
+  },
+  output: {
+    filename: "[name].js",
+    path: path.join(__dirname, "dist")
+  }
+};

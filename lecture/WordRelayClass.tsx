@@ -1,64 +1,73 @@
-import * as React from 'react';
-import { Component, createRef } from 'react';
+import * as React from "react";
+import { Component, createRef } from "react";
 
-interface State {
-    word: string,
-    value: string,
-    result: string,
+interface IState {
+  word: string;
+  value: string;
+  result: string;
 }
 
-class WordRelay extends Component<{}, State> {
-    state = {
-        word: '제로초',
-        value: '',
-        result: '',
-    };
+class WordRelayClass extends Component<{}, IState> {
+  state = {
+    word: "초밥",
+    value: "",
+    result: ""
+  };
 
-    onSubmitForm = (e: React.FormEvent) => {
-        e.preventDefault();
-        const input = this.onRefInput.current;
-        if (this.state.word[this.state.word.length - 1] === this.state.value[0]) {
-            this.setState({
-                result: '딩동댕',
-                word: this.state.value,
-                value: '',
-            });
-            if (input) {
-                input.focus();
-            }
-        } else {
-            this.setState({
-                result: '땡',
-                value: '',
-            });
-            if (input) {
-                input.focus();
-            }
-        }
-    };
+  input: HTMLInputElement | null = null;
 
-    onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({ value: e.currentTarget.value });
-    };
+  onRefInput = createRef<HTMLInputElement>();
 
-    onRefInput = createRef<HTMLInputElement>();
-
-    render() {
-        return (
-            <>
-                <div>{this.state.word}</div>
-                <form onSubmit={this.onSubmitForm}>
-                    <input
-                        ref={this.onRefInput}
-                        value={this.state.value}
-                        onChange={this.onChangeInput}
-                    />
-                    <button>클릭!!!</button>
-                </form>
-                <div>{this.state.result}</div>
-            </>
-        );
+  handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { word, value } = this.state;
+    const input = this.onRefInput.current;
+    if (word[word.length - 1] === value[0]) {
+      this.setState({
+        result: "정답입니다!",
+        word: value,
+        value: ""
+      });
+      if (input) {
+        input.focus();
+      }
+    } else {
+      this.setState({
+        result: "오답입니다!",
+        value: ""
+      });
+      if (input) {
+        input.focus();
+      }
     }
+  };
+
+  handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      value: e.currentTarget.value
+    });
+  };
+
+  render() {
+    const { word, value, result } = this.state;
+    return (
+      <>
+        <div>끝말잇기!</div>
+        <div>{word}</div>
+        <form onSubmit={this.handleSubmitForm}>
+          <input
+            ref={this.onRefInput}
+            type="text"
+            value={value}
+            // 인라인형식으로 쓰면 매개변수가 자동추론 되어 명시하지 않아도 된다.
+            onChange={this.handleOnChange}
+          />
+          <button>입력!</button>
+        </form>
+        <div>{result}</div>
+      </>
+    );
+  }
 }
 
-export default WordRelay;
+export default WordRelayClass;
