@@ -21,6 +21,8 @@ module.exports = {
   },
   output: {
     filename: "[name].js",
-    path: path.join(__dirname, "dist")
+    path: path.join(__dirname, "dist"),
+    // 웹팩 데드서버 쓸때는 publicPath를 써야한다.
+    publicPath: "/dist"
   }
 };

@@ -3,10 +3,17 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { hot } from "react-hot-loader/root";
 
 import GuGuDan from "./GuGuDan";
 import GuGuDanClass from "./GuGuDanClass";
 import WordRelay from "./WordRelay";
 import WordRelayClass from "./WordRelayClass";
+import NumberBaseball from "./NumberBaseball";
+import NumberBaseballClass from "./NumberBaseballClass";
+import ResponsiveCheck from "./ResponsiveCheck";
+import ResponsiveCheckClass from "./ResponsiveCheckClass";
 
-ReactDOM.render(<WordRelayClass />, document.querySelector("#root"));
+const Hot = hot(ResponsiveCheckClass);
+
+ReactDOM.render(<Hot />, document.querySelector("#root"));
