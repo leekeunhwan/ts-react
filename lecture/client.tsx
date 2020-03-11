@@ -13,7 +13,8 @@ import NumberBaseball from "./NumberBaseball";
 import NumberBaseballClass from "./NumberBaseballClass";
 import ResponsiveCheck from "./ResponsiveCheck";
 import ResponsiveCheckClass from "./ResponsiveCheckClass";
+import RSP from "./RSP";
 
-const Hot = hot(ResponsiveCheckClass);
+const Hot = hot(RSP);
 
 ReactDOM.render(<Hot />, document.querySelector("#root"));
