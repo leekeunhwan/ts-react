@@ -13,8 +13,10 @@ import NumberBaseball from "./NumberBaseball";
 import NumberBaseballClass from "./NumberBaseballClass";
 import ResponsiveCheck from "./ResponsiveCheck";
 import ResponsiveCheckClass from "./ResponsiveCheckClass";
+import Lotto from "./Lotto";
+import LottoClass from "./LottoClass";
 import RSP from "./RSP";
 
-const Hot = hot(RSP);
+const Hot = hot(LottoClass);
 
 ReactDOM.render(<Hot />, document.querySelector("#root"));
